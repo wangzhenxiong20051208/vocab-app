@@ -1,0 +1,36 @@
+<view class="page-container">
+  <view class="header">
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progressPercent}}%"></view>
+    </view>
+    <text class="score">✅ {{correctCount}}/{{currentIndex}}</text>
+  </view>
+
+  <block wx:if="{{isComplete}}">
+    <view class="complete-area">
+      <text class="complete-icon">🏆</text>
+      <text class="complete-title">复习完成！</text>
+      <view class="score-circle">
+        <text class="score-big">{{scorePercent}}%</text>
+      </view>
+      <text class="score-detail">{{correctCount}}/{{totalCount}} 正确</text>
+      <view class="complete-actions">
+        <button class="btn-primary" bindtap="restart">再来一轮</button>
+        <button class="btn-secondary" bindtap="goBack">返回词本</button>
+      </view>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="question-area">
+      <text class="q-label">请选择正确的释义</text>
+      <text class="q-word">{{currentWordText}}</text>
+      <view class="options">
+        <view wx:for="{{optionItems}}" wx:key="index" class="option-item {{getOptionClass(index)}}" bindtap="selectOption" data-index="{{index}}">
+          <text class="option-text">{{item.text}}</text>
+          <text wx:if="{{item.showIcon}}" class="option-icon">{{item.icon}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

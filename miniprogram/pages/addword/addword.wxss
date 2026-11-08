@@ -1,0 +1,86 @@
+/* pages/addword/addword.wxss */
+.page-container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1a1a2e;
+  display: block;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggle-icon {
+  font-size: 24rpx;
+  color: #4a90d9;
+}
+
+.form-group {
+  margin-top: 24rpx;
+}
+
+.form-label {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+  margin-bottom: 8rpx;
+}
+
+.form-input {
+  background: #f5f7fa;
+  border-radius: 16rpx;
+  padding: 22rpx 24rpx;
+  font-size: 28rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-textarea {
+  background: #f5f7fa;
+  border-radius: 16rpx;
+  padding: 22rpx 24rpx;
+  font-size: 28rpx;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 120rpx;
+}
+
+.batch-input {
+  min-height: 250rpx;
+  margin-bottom: 20rpx;
+}
+
+.form-tip {
+  font-size: 22rpx;
+  color: #999;
+  display: block;
+  margin: 16rpx 0;
+}
+
+.save-btn {
+  width: 100%;
+  margin-top: 32rpx;
+}
+
+.format-examples {
+  margin-top: 16rpx;
+  background: #f5f7fa;
+  border-radius: 12rpx;
+  padding: 20rpx;
+}
+
+.example-line {
+  font-size: 24rpx;
+  color: #666;
+  display: block;
+  padding: 6rpx 0;
+  font-family: monospace;
+}

@@ -1,0 +1,224 @@
+/* pages/stats/stats.wxss */
+.page-container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+/* 总览卡片 */
+.overview-card {
+  display: flex;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  margin: 20rpx 24rpx;
+  padding: 32rpx 16rpx;
+  border-radius: 24rpx;
+}
+
+.overview-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.overview-num {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: white;
+}
+
+.overview-label {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.6);
+  margin-top: 6rpx;
+}
+
+/* 日历 */
+.card {
+  background: white;
+  margin: 16rpx 24rpx;
+  padding: 28rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1a1a2e;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.calendar-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.calendar-nav {
+  font-size: 28rpx;
+  color: #4a90d9;
+  padding: 10rpx 20rpx;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 12rpx;
+}
+
+.calendar-weekdays text {
+  font-size: 22rpx;
+  color: #999;
+  padding: 8rpx 0;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4rpx;
+}
+
+.calendar-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10rpx;
+  font-size: 24rpx;
+}
+
+.calendar-cell.empty {
+  visibility: hidden;
+}
+
+.calendar-cell.today {
+  border: 2rpx solid #4a90d9;
+  font-weight: 700;
+}
+
+.calendar-cell.studied {
+  background: #e6f7ed;
+  color: #27ae60;
+  font-weight: 600;
+}
+
+.cal-day {
+  font-size: 24rpx;
+}
+
+/* 掌握程度 */
+.level-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.level-item {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.level-color {
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 10rpx;
+}
+
+.level-label {
+  font-size: 24rpx;
+  color: #666;
+  width: 80rpx;
+}
+
+.level-bar-bg {
+  flex: 1;
+  height: 16rpx;
+  background: #f0f0f0;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.level-bar-fill {
+  height: 100%;
+  border-radius: 8rpx;
+  transition: width 0.5s;
+}
+
+.level-count {
+  font-size: 22rpx;
+  color: #999;
+  width: 60rpx;
+  text-align: right;
+}
+
+/* 词本统计 */
+.book-stats-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.book-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.book-stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-stat-name {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.book-stat-progress {
+  font-size: 24rpx;
+  color: #4a90d9;
+  font-weight: 600;
+}
+
+.book-stat-bar-bg {
+  height: 10rpx;
+  background: #f0f0f0;
+  border-radius: 5rpx;
+  overflow: hidden;
+}
+
+.book-stat-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a90d9, #2ecc71);
+  border-radius: 5rpx;
+  transition: width 0.5s;
+}
+
+.book-stat-meta {
+  font-size: 22rpx;
+  color: #999;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 0;
+}
+
+.empty-icon { font-size: 64rpx; margin-bottom: 16rpx; }
+.empty-text { font-size: 26rpx; color: #999; }

@@ -1,0 +1,88 @@
+<!-- pages/wordbook/wordbook.wxml -->
+<view class="page-container">
+  <!-- 词本头部信息 -->
+  <view class="book-header">
+    <view class="header-top">
+      <text class="book-title">{{book ? book.name : ''}}</text>
+      <text class="word-count">{{stats ? stats.total : 0}} 词</text>
+    </view>
+    <!-- 快捷操作按钮 -->
+    <view class="quick-actions">
+      <view class="action-item" bindtap="goToLearn">
+        <text class="action-icon">📚</text>
+        <text class="action-label">学习</text>
+      </view>
+      <view class="action-item" bindtap="goToReview">
+        <text class="action-icon">🔄</text>
+        <text class="action-label">复习</text>
+        <text wx:if="{{dueCount > 0}}" class="badge">{{dueCount}}</text>
+      </view>
+      <view class="action-item" bindtap="goToSpeak">
+        <text class="action-icon">🎧</text>
+        <text class="action-label">听词</text>
+      </view>
+      <view class="action-item" bindtap="goToExport">
+        <text class="action-icon">📤</text>
+        <text class="action-label">导出</text>
+      </view>
+    </view>
+    <!-- 学习进度 -->
+    <view class="progress-section">
+      <view class="progress-bar-bg">
+        <view class="progress-bar-fill" style="width: {{stats ? stats.progress : 0}}%"></view>
+      </view>
+      <text class="progress-text">掌握度 {{stats ? stats.progress : 0}}% ({{stats ? stats.mastered : 0}}/{{stats ? stats.total : 0}})</text>
+    </view>
+  </view>
+
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <input class="search-input" placeholder="搜索单词..."
+           value="{{searchKeyword}}" bindinput="onSearchInput" />
+    <view class="sort-btn" bindtap="toggleMenu">
+      <text class="sort-text">排序</text>
+      <text class="sort-arrow">▼</text>
+    </view>
+  </view>
+
+  <!-- 排序菜单 -->
+  <view wx:if="{{showMenu}}" class="sort-menu">
+    <view class="sort-option {{sortBy == 'newest' ? 'active' : ''}}"
+          bindtap="onSortChange" data-sort="newest">最新添加</view>
+    <view class="sort-option {{sortBy == 'alpha' ? 'active' : ''}}"
+          bindtap="onSortChange" data-sort="alpha">字母顺序</view>
+    <view class="sort-option {{sortBy == 'level' ? 'active' : ''}}"
+          bindtap="onSortChange" data-sort="level">掌握程度</view>
+  </view>
+
+  <!-- 单词列表 -->
+  <scroll-view class="word-list" scroll-y>
+    <view wx:for="{{words}}" wx:key="id" class="word-item">
+      <view class="word-main" bindtap="editWord" data-id="{{item.id}}">
+        <view class="word-header">
+          <text class="word-text">{{item.word}}</text>
+          <text class="word-level" style="color: {{getLevelColor(item.srs.level)}}; background: {{getLevelColor(item.srs.level)}}18">
+            {{getLevelText(item.srs.level)}}
+          </text>
+        </view>
+        <text class="word-meaning">{{item.meaning}}</text>
+        <text wx:if="{{item.example}}" class="word-example">{{item.example}}</text>
+      </view>
+      <view class="word-delete" bindtap="deleteWord" data-id="{{item.id}}">
+        <text class="delete-icon">✕</text>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{words.length == 0}}" class="empty-state">
+      <text class="empty-icon">📝</text>
+      <text class="empty-text">还没有单词，点击下方按钮添加</text>
+    </view>
+  </scroll-view>
+
+  <!-- 添加单词 FAB -->
+  <view class="fab" bindtap="goToAddWord">
+    <text class="fab-icon">+</text>
+    <text class="fab-text">添加单词</text>
+  </view>
+</view>

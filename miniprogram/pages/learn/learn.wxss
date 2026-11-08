@@ -1,0 +1,216 @@
+/* pages/learn/learn.wxss */
+.page-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+}
+
+/* 进度条 */
+.progress-bar {
+  width: 100%;
+  height: 8rpx;
+  background: #e0e0e0;
+  border-radius: 4rpx;
+  overflow: hidden;
+  margin-bottom: 8rpx;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a90d9, #2ecc71);
+  border-radius: 4rpx;
+  transition: width 0.3s;
+}
+
+.progress-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 40rpx;
+  align-self: flex-end;
+}
+
+/* 卡片 */
+.card-area {
+  width: 90%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.flashcard {
+  width: 100%;
+  height: 450rpx;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 28rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40rpx;
+  box-sizing: border-box;
+  box-shadow: 0 8rpx 40rpx rgba(0,0,0,0.08);
+}
+
+.card-front {
+  background: white;
+}
+
+.card-back {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.card-word {
+  font-size: 52rpx;
+  font-weight: 700;
+  color: #1a1a2e;
+  text-align: center;
+}
+
+.card-hint {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 24rpx;
+}
+
+.card-back .card-hint {
+  color: rgba(255,255,255,0.4);
+}
+
+.card-meaning {
+  font-size: 40rpx;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.card-example {
+  font-size: 26rpx;
+  color: rgba(255,255,255,0.6);
+  margin-top: 20rpx;
+  text-align: center;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+/* 提示 */
+.flip-hint {
+  margin-top: 40rpx;
+}
+
+.flip-hint text {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  width: 100%;
+  padding: 40rpx 40rpx 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.action-row {
+  display: flex;
+  gap: 24rpx;
+  width: 100%;
+}
+
+.action-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28rpx 0;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.action-btn:active { transform: scale(0.95); }
+.action-icon { font-size: 40rpx; margin-bottom: 8rpx; }
+.unknown { background: #fde8e8; color: #e74c3c; }
+.hard { background: #fef3e2; color: #f39c12; }
+.known { background: #e6f7ed; color: #27ae60; }
+
+.skip-btn {
+  margin-top: 24rpx;
+  padding: 16rpx 40rpx;
+}
+
+.skip-btn text { font-size: 24rpx; color: #999; }
+
+/* 完成页 */
+.complete-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60rpx;
+}
+
+.complete-icon { font-size: 80rpx; margin-bottom: 20rpx; }
+.complete-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 40rpx;
+}
+
+.complete-stats {
+  display: flex;
+  gap: 40rpx;
+  margin-bottom: 60rpx;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num { font-size: 48rpx; font-weight: 700; }
+.stat-num.green { color: #27ae60; }
+.stat-num.red { color: #e74c3c; }
+.stat-num.gray { color: #999; }
+
+.stat-label {
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.complete-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  width: 80%;
+}

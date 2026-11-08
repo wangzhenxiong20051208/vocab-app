@@ -1,0 +1,55 @@
+<!-- pages/addword/addword.wxml -->
+<view class="page-container">
+  <!-- 单个添加 -->
+  <view class="card">
+    <text class="section-title">单个添加</text>
+
+    <view class="form-group">
+      <text class="form-label">单词 *</text>
+      <input class="form-input" placeholder="输入英文单词"
+             value="{{word}}" bindinput="onWordInput" focus="{{!isEdit}}" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">释义 *</text>
+      <input class="form-input" placeholder="输入中文释义"
+             value="{{meaning}}" bindinput="onMeaningInput" />
+    </view>
+
+    <view class="form-group">
+      <text class="form-label">例句（可选）</text>
+      <textarea class="form-textarea" placeholder="输入例句"
+                value="{{example}}" bindinput="onExampleInput"></textarea>
+    </view>
+
+    <button class="btn-primary save-btn" bindtap="saveWord">
+      {{isEdit ? '更新单词' : '添加单词'}}
+    </button>
+  </view>
+
+  <!-- 批量导入 -->
+  <view class="card">
+    <view class="section-header" bindtap="toggleBatch">
+      <text class="section-title">批量导入</text>
+      <text class="toggle-icon">{{showBatch ? '收起' : '展开'}} ▸</text>
+    </view>
+
+    <view wx:if="{{showBatch}}">
+      <text class="form-tip">每行一个单词，格式：单词 - 释义 - 例句（可选）</text>
+      <textarea class="form-textarea batch-input" placeholder="apple - 苹果&#10;book - 书本 - I read a book.&#10;cat - 猫"
+                value="{{batchText}}" bindinput="onBatchInput"></textarea>
+      <button class="btn-secondary" bindtap="previewBatch">预览并导入</button>
+    </view>
+  </view>
+
+  <!-- 快速输入提示 -->
+  <view wx:if="{{!isEdit}}" class="card">
+    <text class="section-title">支持格式</text>
+    <view class="format-examples">
+      <text class="example-line">单词 - 释义</text>
+      <text class="example-line">单词\t释义</text>
+      <text class="example-line">单词: 释义</text>
+      <text class="example-line">单词：释义</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,119 @@
+<!-- pages/speak/speak.wxml -->
+<view class="page-container">
+  <!-- 词本选择栏 -->
+  <view class="book-selector" bindtap="showBookPicker">
+    <text class="selector-label">📖 {{selectedBookName}}</text>
+    <text class="selector-arrow">▼</text>
+  </view>
+
+  <!-- 主播放区域 -->
+  <view class="player-area">
+    <!-- 词本为空 -->
+    <block wx:if="{{wordList.length == 0 && selectedBookId}}">
+      <view class="empty-hint">
+        <text class="empty-icon">📝</text>
+        <text>这个词本还没有单词</text>
+      </view>
+    </block>
+
+    <!-- 未选择词本 -->
+    <block wx:if="{{!selectedBookId}}">
+      <view class="empty-hint">
+        <text class="empty-icon">📚</text>
+        <text>请先选择一个词本</text>
+      </view>
+    </block>
+
+    <!-- 有单词时的卡片 -->
+    <block wx:if="{{wordList.length > 0 && currentWord}}">
+      <!-- 进度条 -->
+      <view class="progress-container">
+        <view class="progress-track">
+          <slider value="{{currentIndex}}" min="0" max="{{Math.max(0, totalWords - 1)}}"
+                  block-size="12" activeColor="#4a90d9" backgroundColor="#e0e0e0"
+                  bindchange="onSliderChange" />
+        </view>
+        <text class="progress-count">{{currentIndex + 1}} / {{totalWords}}</text>
+      </view>
+
+      <!-- 单词卡片 -->
+      <view class="word-display">
+        <text class="word-big">{{currentWord.word}}</text>
+        <view wx:if="{{showMeaning}}" class="meaning-area" animation="{{slideUp}}">
+          <text class="meaning-text">{{currentWord.meaning}}</text>
+          <text wx:if="{{currentWord.example}}" class="example-text">
+            {{currentWord.example}}
+          </text>
+        </view>
+        <!-- 等待时显示省略号 -->
+        <view wx:else class="waiting-area">
+          <text class="waiting-dots">...</text>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 控制面板 -->
+  <view class="controls-area">
+    <!-- 主控制按钮 -->
+    <view class="main-controls">
+      <view class="ctrl-btn prev-btn" bindtap="prev">
+        <text>⏮</text>
+      </view>
+      <view class="ctrl-btn play-btn" bindtap="togglePlay">
+        <text wx:if="{{playState == 'idle' || playState == 'stopped'}}">▶️</text>
+        <text wx:elif="{{playState == 'playing'}}">⏸</text>
+        <text wx:else>▶️</text>
+      </view>
+      <view class="ctrl-btn next-btn" bindtap="next">
+        <text>⏭</text>
+      </view>
+    </view>
+
+    <!-- 状态文字 -->
+    <text class="state-text">{{stateText}}</text>
+    <text wx:if="{{remainingSeconds > 0}}" class="timer-text">
+      剩余 {{formatTime(remainingSeconds)}}
+    </text>
+
+    <!-- 快捷设置条 -->
+    <view class="quick-settings">
+      <view class="qs-item" bindtap="changeSpeed">
+        <text class="qs-label">语速</text>
+        <text class="qs-value">{{speedOptions[speedIndex]}}</text>
+      </view>
+      <view class="qs-item" bindtap="changeLoop">
+        <text class="qs-label">模式</text>
+        <text class="qs-value">{{loopText}}</text>
+      </view>
+      <view class="qs-item" bindtap="changeReadMode">
+        <text class="qs-label">朗读</text>
+        <text class="qs-value">{{readModeText}}</text>
+      </view>
+      <view class="qs-item" bindtap="changeTimer">
+        <text class="qs-label">定时</text>
+        <text class="qs-value">{{timerOptions[timerIndex]}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 词本选择弹窗 -->
+  <view wx:if="{{showBookPicker}}" class="modal-overlay" bindtap="hideBookPicker">
+    <view class="modal-content book-picker" catchtap>
+      <text class="modal-title">选择词本</text>
+      <scroll-view class="picker-list" scroll-y>
+        <view wx:for="{{books}}" wx:key="id"
+              class="picker-item {{item.id == selectedBookId ? 'active' : ''}}"
+              bindtap="onSelectBook" data-id="{{item.id}}">
+          <text class="picker-name">{{item.name}}</text>
+          <text class="picker-count">{{item.wordCount}} 词</text>
+          <text wx:if="{{item.id == selectedBookId}}" class="picker-check">✓</text>
+        </view>
+        <view wx:if="{{books.length == 0}}" class="picker-empty">
+          <text>还没有词本，去创建吧</text>
+        </view>
+      </scroll-view>
+      <button class="btn-cancel" bindtap="hideBookPicker">取消</button>
+    </view>
+  </view>
+</view>

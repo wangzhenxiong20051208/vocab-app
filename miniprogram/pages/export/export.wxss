@@ -1,0 +1,148 @@
+/* pages/export/export.wxss */
+.page-container {
+  background: #f5f7fa;
+  min-height: 100vh;
+  padding-bottom: 40rpx;
+}
+
+.card {
+  background: white;
+  margin: 20rpx 24rpx;
+  padding: 32rpx;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
+}
+
+.card-title {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #1a1a2e;
+  display: block;
+}
+
+.card-subtitle {
+  font-size: 26rpx;
+  color: #999;
+  display: block;
+  margin-top: 8rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin: 30rpx 24rpx 16rpx;
+}
+
+/* 格式选项 */
+.format-list {
+  padding: 0 24rpx;
+}
+
+.format-item {
+  display: flex;
+  align-items: center;
+  background: white;
+  padding: 24rpx 28rpx;
+  border-radius: 16rpx;
+  margin-bottom: 12rpx;
+  border: 3rpx solid transparent;
+  transition: all 0.2s;
+  box-shadow: 0 1rpx 6rpx rgba(0,0,0,0.04);
+}
+
+.format-item.selected {
+  border-color: #4a90d9;
+  background: #f0f7ff;
+}
+
+.format-icon {
+  font-size: 40rpx;
+  margin-right: 20rpx;
+}
+
+.format-info {
+  flex: 1;
+}
+
+.format-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 4rpx;
+}
+
+.format-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.recommend-tag {
+  font-size: 20rpx;
+  background: #e6f7ed;
+  color: #27ae60;
+  padding: 2rpx 12rpx;
+  border-radius: 8rpx;
+}
+
+.format-desc {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+}
+
+.format-check {
+  width: 44rpx;
+  height: 44rpx;
+  border-radius: 22rpx;
+  border: 2rpx solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 16rpx;
+}
+
+.format-check.checked {
+  background: #4a90d9;
+  border-color: #4a90d9;
+}
+
+.format-check.checked text {
+  color: white;
+  font-size: 24rpx;
+  font-weight: 700;
+}
+
+/* 导出按钮 */
+.export-section {
+  padding: 40rpx 24rpx;
+}
+
+.export-btn {
+  width: 100%;
+  padding: 28rpx;
+  font-size: 32rpx;
+}
+
+/* 提示 */
+.tips {
+  padding: 0 24rpx;
+}
+
+.tip-title {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #333;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.tip-text {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+  line-height: 1.6;
+  margin-bottom: 4rpx;
+}

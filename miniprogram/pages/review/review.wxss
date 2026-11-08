@@ -1,0 +1,157 @@
+/* pages/review/review.wxss */
+.page-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding: 24rpx;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8rpx;
+  background: #e0e0e0;
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a90d9, #2ecc71);
+  border-radius: 4rpx;
+  transition: width 0.3s;
+}
+
+.score {
+  font-size: 24rpx;
+  color: #27ae60;
+  white-space: nowrap;
+}
+
+/* 题目区 */
+.question-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.q-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+
+.q-word {
+  font-size: 52rpx;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 60rpx;
+  padding: 30rpx;
+  background: white;
+  border-radius: 20rpx;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.06);
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 28rpx 32rpx;
+  border-radius: 20rpx;
+  border: 3rpx solid transparent;
+  transition: all 0.2s;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
+}
+
+.option-item:active {
+  transform: scale(0.98);
+}
+
+.option-item.selected {
+  border-color: #4a90d9;
+}
+
+.option-item.correct {
+  background: #e6f7ed;
+  border-color: #27ae60;
+}
+
+.option-item.wrong {
+  background: #fde8e8;
+  border-color: #e74c3c;
+}
+
+.option-text {
+  font-size: 30rpx;
+  color: #333;
+  flex: 1;
+}
+
+.option-icon {
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.correct .option-icon { color: #27ae60; }
+.wrong .option-icon { color: #e74c3c; }
+
+/* 完成 */
+.complete-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 100rpx;
+}
+
+.complete-icon { font-size: 80rpx; margin-bottom: 20rpx; }
+.complete-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 40rpx;
+}
+
+.score-circle {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 100rpx;
+  background: linear-gradient(135deg, #4a90d9, #2ecc71);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+}
+
+.score-big {
+  font-size: 52rpx;
+  font-weight: 700;
+  color: white;
+}
+
+.score-detail {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 60rpx;
+}
+
+.complete-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+  width: 80%;
+}

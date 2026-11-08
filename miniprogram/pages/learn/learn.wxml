@@ -1,0 +1,81 @@
+<!-- pages/learn/learn.wxml -->
+<view class="page-container">
+  <!-- 学习进度 -->
+  <view class="progress-bar">
+    <view class="progress-fill" style="width: {{totalCount > 0 ? (currentIndex / totalCount * 100) : 0}}%"></view>
+  </view>
+  <text class="progress-label">{{currentIndex + 1}} / {{totalCount}}</text>
+
+  <!-- 完成状态 -->
+  <block wx:if="{{isComplete}}">
+    <view class="complete-area">
+      <text class="complete-icon">🎉</text>
+      <text class="complete-title">学习完成！</text>
+      <view class="complete-stats">
+        <view class="stat-item">
+          <text class="stat-num green">{{stats.known}}</text>
+          <text class="stat-label">已掌握</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-num red">{{stats.unknown}}</text>
+          <text class="stat-label">需复习</text>
+        </view>
+        <view class="stat-item">
+          <text class="stat-num gray">{{stats.skipped}}</text>
+          <text class="stat-label">跳过</text>
+        </view>
+      </view>
+      <view class="complete-actions">
+        <button class="btn-primary" bindtap="restart">再来一轮</button>
+        <button class="btn-secondary" bindtap="goBack">返回词本</button>
+      </view>
+    </view>
+  </block>
+
+  <!-- 卡片 -->
+  <block wx:else>
+    <view class="card-area">
+      <view class="flashcard {{isFlipped ? 'flipped' : ''}}" bindtap="flipCard">
+        <view class="card-inner">
+          <view class="card-front">
+            <text class="card-word">{{currentWord ? currentWord.word : ''}}</text>
+            <text class="card-hint">点击翻转查看释义</text>
+          </view>
+          <view class="card-back">
+            <text class="card-meaning">{{currentWord ? currentWord.meaning : ''}}</text>
+            <text wx:if="{{currentWord && currentWord.example}}" class="card-example">
+              {{currentWord.example}}
+            </text>
+            <text class="card-hint">点击翻转回单词</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 操作按钮（仅翻转后显示） -->
+    <view wx:if="{{isFlipped}}" class="action-buttons">
+      <view class="action-row">
+        <view class="action-btn unknown" bindtap="markUnknown">
+          <text class="action-icon">❌</text>
+          <text>不认识</text>
+        </view>
+        <view class="action-btn hard" bindtap="markHard">
+          <text class="action-icon">🤔</text>
+          <text>模糊</text>
+        </view>
+        <view class="action-btn known" bindtap="markKnown">
+          <text class="action-icon">✅</text>
+          <text>认识</text>
+        </view>
+      </view>
+      <view class="skip-btn" bindtap="skipCard">
+        <text>跳过 →</text>
+      </view>
+    </view>
+
+    <!-- 未翻转时显示提示 -->
+    <view wx:else class="flip-hint">
+      <text>点击卡片查看释义</text>
+    </view>
+  </block>
+</view>

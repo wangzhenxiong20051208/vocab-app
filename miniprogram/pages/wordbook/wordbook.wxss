@@ -1,0 +1,237 @@
+/* pages/wordbook/wordbook.wxss */
+.page-container {
+  min-height: 100vh;
+  background: #f5f7fa;
+  padding-bottom: 140rpx;
+}
+
+/* 头部 */
+.book-header {
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  padding: 32rpx 30rpx 30rpx;
+  color: white;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.book-title {
+  font-size: 38rpx;
+  font-weight: 700;
+}
+
+.word-count {
+  font-size: 26rpx;
+  opacity: 0.7;
+}
+
+/* 快捷操作 */
+.quick-actions {
+  display: flex;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+}
+
+.action-item {
+  flex: 1;
+  background: rgba(255,255,255,0.1);
+  border-radius: 16rpx;
+  padding: 20rpx 12rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.action-item:active {
+  background: rgba(255,255,255,0.2);
+}
+
+.action-icon {
+  font-size: 36rpx;
+  margin-bottom: 6rpx;
+}
+
+.action-label {
+  font-size: 22rpx;
+  color: rgba(255,255,255,0.8);
+}
+
+.badge {
+  position: absolute;
+  top: 8rpx;
+  right: 8rpx;
+  background: #e74c3c;
+  color: white;
+  font-size: 18rpx;
+  min-width: 30rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6rpx;
+}
+
+/* 进度条 */
+.progress-section {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.progress-bar-bg {
+  flex: 1;
+  height: 8rpx;
+  background: rgba(255,255,255,0.2);
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4a90d9, #2ecc71);
+  border-radius: 4rpx;
+  transition: width 0.5s;
+}
+
+.progress-text {
+  font-size: 22rpx;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+/* 搜索栏 */
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: white;
+  margin: 20rpx 24rpx 0;
+  padding: 16rpx 24rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0,0,0,0.04);
+}
+
+.search-input {
+  flex: 1;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.sort-btn {
+  display: flex;
+  align-items: center;
+  padding: 8rpx 16rpx;
+  border-radius: 12rpx;
+  background: #f5f7fa;
+  margin-left: 16rpx;
+}
+
+.sort-text { font-size: 24rpx; color: #666; margin-right: 6rpx; }
+.sort-arrow { font-size: 18rpx; color: #999; }
+
+/* 排序菜单 */
+.sort-menu {
+  background: white;
+  margin: 0 24rpx;
+  border-radius: 0 0 16rpx 16rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.sort-option {
+  padding: 24rpx 28rpx;
+  font-size: 26rpx;
+  color: #333;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.sort-option:last-child { border-bottom: none; }
+.sort-option.active { color: #4a90d9; font-weight: 600; }
+.sort-option:active { background: #f5f7fa; }
+
+/* 单词列表 */
+.word-list {
+  padding: 16rpx 24rpx 140rpx;
+}
+
+.word-item {
+  background: white;
+  border-radius: 16rpx;
+  padding: 24rpx 28rpx;
+  margin-bottom: 12rpx;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1rpx 6rpx rgba(0,0,0,0.04);
+}
+
+.word-main { flex: 1; }
+.word-delete { padding: 16rpx 0 16rpx 20rpx; }
+.delete-icon { font-size: 24rpx; color: #ccc; }
+
+.word-header {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 8rpx;
+}
+
+.word-text {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.word-level {
+  font-size: 20rpx;
+  padding: 4rpx 14rpx;
+  border-radius: 20rpx;
+}
+
+.word-meaning {
+  font-size: 26rpx;
+  color: #666;
+  display: block;
+}
+
+.word-example {
+  font-size: 22rpx;
+  color: #999;
+  display: block;
+  margin-top: 6rpx;
+  font-style: italic;
+}
+
+/* FAB */
+.fab {
+  position: fixed;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #4a90d9, #357abd);
+  color: white;
+  padding: 24rpx 56rpx;
+  border-radius: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(74, 144, 217, 0.4);
+}
+
+.fab:active { transform: translateX(-50%) scale(0.96); }
+.fab-icon { font-size: 36rpx; font-weight: 300; margin-right: 12rpx; }
+.fab-text { font-size: 30rpx; font-weight: 500; }
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 100rpx 0;
+}
+.empty-icon { font-size: 80rpx; margin-bottom: 20rpx; }
+.empty-text { font-size: 26rpx; color: #999; }

@@ -1,0 +1,44 @@
+<!-- pages/export/export.wxml -->
+<view class="page-container">
+  <!-- 词本信息 -->
+  <view class="card">
+    <text class="card-title">📕 {{bookName}}</text>
+    <text class="card-subtitle">共 {{wordCount}} 个单词</text>
+  </view>
+
+  <!-- 导出格式选择 -->
+  <text class="section-title">选择导出格式</text>
+
+  <view class="format-list">
+    <view wx:for="{{formats}}" wx:key="id"
+          class="format-item {{exportFormat == item.id ? 'selected' : ''}}"
+          bindtap="selectFormat" data-format="{{item.id}}">
+      <text class="format-icon">{{item.icon}}</text>
+      <view class="format-info">
+        <view class="format-header">
+          <text class="format-name">{{item.name}}</text>
+          <text wx:if="{{item.recommend}}" class="recommend-tag">推荐</text>
+        </view>
+        <text class="format-desc">{{item.desc}}</text>
+      </view>
+      <view class="format-check {{exportFormat == item.id ? 'checked' : ''}}">
+        <text wx:if="{{exportFormat == item.id}}">✓</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 导出按钮 -->
+  <view class="export-section">
+    <button class="btn-primary export-btn" bindtap="doExport" disabled="{{isExporting}}">
+      {{isExporting ? '正在导出...' : '导出词本'}}
+    </button>
+  </view>
+
+  <!-- 提示 -->
+  <view class="tips">
+    <text class="tip-title">💡 提示</text>
+    <text class="tip-text">• PDF 格式需要先部署云函数，推荐在平板上使用</text>
+    <text class="tip-text">• CSV 格式可用 WPS/Excel 打开编辑</text>
+    <text class="tip-text">• JSON 格式包含完整学习数据</text>
+  </view>
+</view>

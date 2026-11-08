@@ -1,0 +1,80 @@
+<!-- pages/stats/stats.wxml -->
+<view class="page-container">
+  <!-- 总览卡片 -->
+  <view class="overview-card">
+    <view class="overview-item">
+      <text class="overview-num">{{totalWords}}</text>
+      <text class="overview-label">总词汇</text>
+    </view>
+    <view class="overview-item">
+      <text class="overview-num">{{totalLearned}}</text>
+      <text class="overview-label">已学</text>
+    </view>
+    <view class="overview-item">
+      <text class="overview-num">{{totalMastered}}</text>
+      <text class="overview-label">掌握</text>
+    </view>
+    <view class="overview-item">
+      <text class="overview-num">{{streakDays}}</text>
+      <text class="overview-label">连续打卡</text>
+    </view>
+  </view>
+
+  <!-- 学习日历 -->
+  <view class="card">
+    <view class="calendar-header">
+      <text class="calendar-nav" bindtap="prevMonth">◀</text>
+      <text class="calendar-title">{{monthLabel}}</text>
+      <text class="calendar-nav" bindtap="nextMonth">▶</text>
+    </view>
+
+    <view class="calendar-weekdays">
+      <text wx:for="{{['日','一','二','三','四','五','六']}}" wx:key="*this">{{item}}</text>
+    </view>
+
+    <view class="calendar-grid">
+      <view wx:for="{{calendarData}}" wx:key="day" class="calendar-cell {{item.empty ? 'empty' : ''}} {{item.isToday ? 'today' : ''}} {{item.studied ? 'studied' : ''}}">
+        <text wx:if="{{!item.empty}}" class="cal-day">{{item.day}}</text>
+        <text wx:elif="{{item.studied}}" class="cal-dot">•</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 掌握程度分布 -->
+  <view class="card">
+    <text class="card-title">掌握程度分布</text>
+    <view class="level-list">
+      <view wx:for="{{levelDistribution}}" wx:key="level" class="level-item">
+        <text class="level-color" style="background: {{item.color}}"></text>
+        <text class="level-label">{{item.label}}</text>
+        <view class="level-bar-bg">
+          <view class="level-bar-fill" style="width: {{totalWords > 0 ? (item.count / totalWords * 100) : 0}}%; background: {{item.color}}"></view>
+        </view>
+        <text class="level-count">{{item.count}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 词本详情 -->
+  <view wx:if="{{bookStats.length > 0}}" class="card">
+    <text class="card-title">词本详情</text>
+    <view class="book-stats-list">
+      <view wx:for="{{bookStats}}" wx:key="name" class="book-stat-item">
+        <view class="book-stat-header">
+          <text class="book-stat-name">{{item.name}}</text>
+          <text class="book-stat-progress">{{item.progress}}%</text>
+        </view>
+        <view class="book-stat-bar-bg">
+          <view class="book-stat-bar-fill" style="width: {{item.progress}}%"></view>
+        </view>
+        <text class="book-stat-meta">{{item.learned}}/{{item.total}} 已学 · {{item.mastered}} 掌握</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{totalWords == 0}}" class="empty-state">
+    <text class="empty-icon">📊</text>
+    <text class="empty-text">还没有学习数据，开始背单词吧！</text>
+  </view>
+</view>

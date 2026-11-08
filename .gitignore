@@ -1,0 +1,26 @@
+# Dependencies (restore with npm ci)
+node_modules/
+miniprogram_npm/
+
+# WeChat developer tools: per-computer preferences
+project.private.config.json
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.local.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Logs, caches and editor/OS files
+*.log
+npm-debug.log*
+.cache/
+coverage/
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
